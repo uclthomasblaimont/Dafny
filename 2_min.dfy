@@ -26,6 +26,7 @@ ghost function minFunction(a: int, b: int): int
     if a < b then a else b
 }
 
+
 // Return a minimum of a.
 method minArray(a: array<int>) returns (m: int)
     requires a!= null  && a.Length > 0 ;
@@ -47,4 +48,9 @@ method minArray(a: array<int>) returns (m: int)
         }
         i := i + 1;
     }
+}
+
+method Main(){
+    var integer:= min(1,2);
+    print(integer);
 }
