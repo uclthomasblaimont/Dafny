@@ -53,8 +53,8 @@ method searchAll(a: array<int>, elements: array<int>) returns (allFound: bool)
     var i := 0;
     while i < elements.Length && allFound
         invariant 0 <= i <= elements.Length // Invariant de boucle : l'indice reste dans les limites du tableau
-        invariant allFound ==> forall j | 0 <= j < i :: contains(a, elements[j]) // Invariant de boucle : tous les éléments vérifiés jusqu'à présent sont dans `a`
-        invariant !allFound ==> exists k | 0 <= k < i :: !contains(a, elements[k]) // Invariant de boucle : si non trouvé, alors au moins un élément vérifié n'est pas dans `a`
+        invariant allFound <==> forall j | 0 <= j < i :: contains(a, elements[j]) // Invariant de boucle : tous les éléments vérifiés jusqu'à présent sont dans `a`
+        invariant !allFound <==> exists k | 0 <= k < i :: !contains(a, elements[k]) // Invariant de boucle : si non trouvé, alors au moins un élément vérifié n'est pas dans `a`
     {
         if (!search(a, elements[i])) {
             allFound := false;
